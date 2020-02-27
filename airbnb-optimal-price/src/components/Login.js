@@ -17,10 +17,9 @@ const handleSubmit = e => {
  
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column'}}>
         <input type="text" name="name" placeholder="username" />
         <input type="password" name="password" />
-
         <button>Log In</button>
       </form>
     </div>

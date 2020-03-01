@@ -5,13 +5,13 @@ import NavLinks from './NavLinks';
 
 
 
-const MobilNav = styled.div`
+const MobileNav = styled.div`
 background: #500c2f;
 border:none;
 width: 50vw;
 align-self:flex-end;
-background:  #500c2f ;
-opacity:70%;
+background:  maroon ;
+opacity:1;
 box-shadow: -10px 10px 5px black;
 display:none;
 @media screen and (max-width:768px) {
@@ -52,10 +52,10 @@ const Mobile = () => {
   
         return (
 
-             <MobilNav>
+             <MobileNav>
                 <NavLinks />
                 
-             </MobilNav>
+             </MobileNav>
         )
     }
 

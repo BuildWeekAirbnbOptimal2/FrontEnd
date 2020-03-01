@@ -21,6 +21,7 @@ console.log("this shit",property);
 return (
     <form onSubmit= {submitForm}>
     <lable htmlFor='title'>Property Title</lable>
+    <br></br>
     <input 
     id='title'
     type='text'
@@ -29,10 +30,15 @@ return (
     placeholder='title'
     value={property.title}
     />
-    <lable htmlFor='property'>Property</lable>
+    <br></br> 
+    <br></br>
+    <br></br>
+    <lable htmlFor='property'>Summery the Property</lable>
+    <br></br>
     <textarea 
     id='property'
     name='body'
+    placeholder="Brief Summery of property."
     onChange={handleChanges}
     value={property.body}
     />

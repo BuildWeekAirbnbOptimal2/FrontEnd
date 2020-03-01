@@ -7,19 +7,17 @@ const NavLinks = () => {
 
     return(
         <div>
-        <div className='logo'>Logo</div>
+        <Link to='/src/components/' className='logo'>Logo</Link>
         <ul className='nav-links'>
+            
             <li>
-                <Link to='/' className='link'>Home</Link>
+                <Link to='/src/components/' className='link'>Add Props</Link>
             </li>
             <li>
-                <Link to='/' className='link'>Add</Link>
+                <Link to='/src/components/' className='link'>View Props</Link>
             </li>
             <li>
-                <Link to='/' className='link'>View</Link>
-            </li>
-            <li>
-                <Link to='/' className='link'>Sign up</Link>
+                <Link to='/src/components/Login' className='link'>LogOut</Link>
             </li>
         </ul>
         

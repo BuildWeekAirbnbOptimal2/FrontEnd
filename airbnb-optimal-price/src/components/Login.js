@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 const FormWrapper = styled.div`
@@ -54,6 +55,8 @@ const handleSubmit = e => {
         <input type="text" name="name" placeholder="username" />
         <input type="password" name="password" placeholder="password"/>
         <button>Log In</button>
+        <h6>Need an account?</h6>
+        <Link to='/src/components/SignUp'>Sign up</Link>
       </FormContainer>
     </FormWrapper>
   )

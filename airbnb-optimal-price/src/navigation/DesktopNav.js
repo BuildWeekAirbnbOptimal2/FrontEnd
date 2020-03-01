@@ -97,21 +97,20 @@ const DesktopNav = () => {
   
         return (
             <DesktopNavBar>
-                <div className='logo'>Logo</div>
+                <Link to='/src/components/' className='logo'>Logo</Link>
                 <ul className='nav-links'>
+                    
                     <li>
-                        <Link className='link'>Home</Link>
+                        <Link to='/src/components/' className='link'>Add Props</Link>
                     </li>
                     <li>
-                        <Link className='link'>Add</Link>
+                        <Link to='/src/components/' className='link'>Your Props</Link>
                     </li>
                     <li>
-                        <Link className='link'>View</Link>
-                    </li><li>
-                        <Link className='link'>Sign up</Link>
+                        <Link to='/src/components/' className='link'>About</Link>
                     </li>
                     <li>
-                        <Link className='link'>About</Link>
+                        <Link to='/src/components/Login' className='link'>LogOut</Link>
                     </li>
                 </ul>
                

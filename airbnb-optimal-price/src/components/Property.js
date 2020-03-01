@@ -8,6 +8,7 @@ const Property = props => {
             <div key={property.id}>
             <h2>{property.title}</h2>
             <p>{property.body}</p>
+            
             </div>
         ))}
         </div>

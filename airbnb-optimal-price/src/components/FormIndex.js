@@ -4,6 +4,9 @@ import PropertyForm from './PropertyForm';
 
 
 function FormIndex(){
+    const [photo, setPhoto]=useState([{
+        selectedFile:null
+    }])
     const [properties, setProperties]= useState([{
         id: 1,
         title: '',
@@ -18,12 +21,18 @@ const addNewPropery = property => {
     };
     setProperties([...properties, newProperty]);
 };
-
+const addNewPhoto = photos => {
+    const newPhoto = {
+        selectedFile:photos.selectedFile
+    }
+    setPhoto([...photo,newPhoto])
+}
 return(
     <div>
     <h1>My Properties</h1>
-    <PropertyForm addNewPropery={addNewPropery}/>
+    <PropertyForm addNewPropery={addNewPropery} addNewPhoto={addNewPhoto}/>
     <Property properties={properties}/>
+
     </div>
 )
 }

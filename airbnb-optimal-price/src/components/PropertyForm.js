@@ -2,22 +2,32 @@ import React, {useState} from 'react';
 
 
 const PropertyForm = props => {
+const [photo, setPhoto]=useState({
+    selectedFile:null
+})
 const [property, setProperty]= useState({
     title: '',
-    body:''
+    body:'',
+    
 });
 
 const handleChanges = e => {
-    setProperty({...property,[e.target.name]: e.target.value });
+    setProperty({...property,[e.target.name]: e.target.value});
    
 };
 
 const submitForm = e => {
     e.preventDefault();
     props.addNewPropery(property);
-    setProperty({title:'', body:'' });
+    setProperty({title:'', body:'',selectedFile: ''});
 };
-console.log("this shit",property);
+
+const onChangeHandler = e =>{
+    // console.log(e.target.files[0])
+    setPhoto({...photo,[e.target.name]: e.target.value})
+    
+}
+
 return (
     <form onSubmit= {submitForm}>
     <lable htmlFor='title'>Property Title</lable>
@@ -42,6 +52,18 @@ return (
     onChange={handleChanges}
     value={property.body}
     />
+    <br></br>
+    <br></br>
+    <br></br>
+    <input
+    id='file'
+    name='file'
+    onClick={onChangeHandler}
+    value={property.onChangeHandler}
+    
+    />
+
+    
     <button type='submit'>Add Property</button>
     </form>
 );

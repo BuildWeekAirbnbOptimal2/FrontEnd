@@ -7,7 +7,7 @@ const NavLinks = () => {
 
     return(
         <div>
-        <Link to='/src/components/' className='logo'>Logo</Link>
+        <Link to='/src/components/' className='logo'>Airbnb Pricer</Link>
         <ul className='nav-links'>
             
             <li>
@@ -17,8 +17,12 @@ const NavLinks = () => {
                 <Link to='/src/components/' className='link'>View Props</Link>
             </li>
             <li>
+            <Link to='/src/components/' className='link'>About Us</Link>
+        </li>
+            <li>
                 <Link to='/src/components/Login' className='link'>LogOut</Link>
             </li>
+           
         </ul>
         
         </div>

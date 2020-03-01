@@ -97,7 +97,7 @@ const DesktopNav = () => {
   
         return (
             <DesktopNavBar>
-                <Link to='/src/components/' className='logo'>Logo</Link>
+                <Link to='/src/components/' className='logo'>Airbnb Pricer</Link>
                 <ul className='nav-links'>
                     
                     <li>
@@ -107,7 +107,7 @@ const DesktopNav = () => {
                         <Link to='/src/components/' className='link'>Your Props</Link>
                     </li>
                     <li>
-                        <Link to='/src/components/' className='link'>About</Link>
+                        <Link to='/src/components/' className='link'>About Us</Link>
                     </li>
                     <li>
                         <Link to='/src/components/Login' className='link'>LogOut</Link>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import axios from 'axios'
 
 const PropertyForm = props => {
 const [photo, setPhoto]=useState({
@@ -19,13 +19,28 @@ const handleChanges = e => {
 const submitForm = e => {
     e.preventDefault();
     props.addNewPropery(property);
-    setProperty({title:'', body:'',selectedFile: ''});
+    setProperty({title:'', body:''});
+    setPhoto({selectedFile:null})
 };
 
 const onChangeHandler = e =>{
-    // console.log(e.target.files[0])
-    setPhoto({...photo,[e.target.name]: e.target.value})
+    console.log("phtos",e.target.files[0])
+    setPhoto({...photo,
+        [e.target.selectedFile]: e.target.files[0],
+        loaded:0,
+    })
     
+}
+const onClickHandler = () =>{
+    const data = new FormData()
+    data.append('file',photo.selectedFile)
+    axios.post('http://localhost:8000/upload',data,{
+        //reciece two parameter endpoint url and form data
+    })
+    .then(response =>{
+        //prints response status
+        console.log(response.statusText)
+    })
 }
 
 return (
@@ -57,12 +72,15 @@ return (
     <br></br>
     <input
     id='file'
+    type='file'
     name='file'
+    file='file'
+    onChange={onClickHandler}
     onClick={onChangeHandler}
-    value={property.onChangeHandler}
+    value={photo.onChangeHandler}
     
     />
-
+    <button type="button" className="btn btn-success btn-block" value={photo.onClickHandler} onClick={onClickHandler}>Upload</button> 
     
     <button type='submit'>Add Property</button>
     </form>

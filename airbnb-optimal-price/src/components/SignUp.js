@@ -1,65 +1,45 @@
 import React, {useState} from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import styled from "styled-components"
+import styled from "styled-components";
 
 
-const SignUpCard = styled.div`
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    width: 300px;
-    margin-top: 20%;
-     margin-left: 20%;
-     display: flex;
-     flex-wrap: wrap;
-    justify-content:space-around;
-    align-items: center;
-`;
-const Title = styled.h1`
-    font-family: Caladea;
-    text-align: center;
-    padding-top: 0.5rem;
-`;
+const FormWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  text-align: center;
+  margin: 80px auto 0;
+`
 
-export const input = styled.div`
-    width: 350px;
-    height: 30px;
-    box-sizing: border-box;
-    background: #ffffff;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: 100%;
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 450px;
+  border: 3px solid #c9c7c7;
+  border-radius:15px;
+  margin-left: 40%;
+  box-shadow: 5px 10px 20px #c9c7c7 ;
+  align-items: center;
+   
+
+  input {
+      width:65%;
+      border: 1.5px solid gray;
+      border-radius:5px;
     padding: 5px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25);
-    margin-top: 0.25rem;
-    margin-bottom: 0.5rem;
-    align-items: center;
-`;
+    margin-bottom: 10px
+  }
 
-export const Button = styled.button`
-    background: #500A30;
-    box-shadow: white;
-    color:white;
-    border-radius: 10px;
-    width: 150px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    margin: 1rem auto;
-    font-family: inherit;
-
-    &:hover {
-        background: #5F3739;
-        color: white;
-    }
-`;
-
-
-
+  button {
+    width: 120px;
+    padding: 5px;
+    background: #5f3739;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    outline-color: orange;
+  }`
 
 const Signup = props => {
     const [user, setUser] = useState({
@@ -82,7 +62,7 @@ const Signup = props => {
   
     const handleSubmit = e => {
       e.preventDefault();
-  git
+  
          axiosWithAuth()
             .post("",user)
             .then(res => {
@@ -105,9 +85,9 @@ const Signup = props => {
   
     return (
    
-     <SignUpCard>
-          <Title>Sign Up</Title>
-          <form onSubmit={handleSubmit}>
+     <FormContainer>
+          <h1>Sign Up</h1>
+          <FormWrapper onSubmit={handleSubmit}>
             <div className='signup'>  
                 <input
                   type='text'
@@ -141,7 +121,6 @@ const Signup = props => {
                   onChange={handleChange}
                   required
                 />
-
                 <input
                   placeholder='Username'
                   name='username'
@@ -160,13 +139,13 @@ const Signup = props => {
                 />
                 
               <div>
-                <Button type='submit'>Sign Up</Button>
+                <button type='submit'>Sign Up</button>
               </div>
                  {/* <link to=''>I already have an account</link> */}
                
          </div>
-        </form>
-        </SignUpCard>
+        </FormWrapper>
+        </FormContainer>
         
     );
   };

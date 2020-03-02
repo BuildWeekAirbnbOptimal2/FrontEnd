@@ -5,20 +5,21 @@ import styled from "styled-components";
 
 const FormWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   text-align: center;
-  margin: 80px auto 0;
+  margin: 20px auto 0;
 `
 
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   width: 25%;
-  height: 450px;
+  height: 550px;
   border: 3px solid #c9c7c7;
   border-radius:15px;
   margin-left: 40%;
+  margin-bottom: 20%;
   box-shadow: 5px 10px 20px #c9c7c7 ;
   align-items: center;
    
@@ -32,19 +33,21 @@ const FormContainer = styled.form`
   }
 
   button {
-    width: 120px;
-    padding: 5px;
+    margin-top: 35px;
+    width: 160px;
+    padding: 8px;
     background: #5f3739;
     color: #fff;
     border: none;
     border-radius: 4px;
-    outline-color: orange;
+  
   }`
 
 const Signup = props => {
     const [user, setUser] = useState({
         firstname: "",
         lastname:"",
+        address: "",
         city:'',
         state:"",
         password: "",
@@ -64,9 +67,9 @@ const Signup = props => {
       e.preventDefault();
   
          axiosWithAuth()
-            .post("",user)
+            .post("TEST",user)
             .then(res => {
-            console.log('Test:', res);
+            console.log('TEST', res);
             setUser({
                 firstname: "",
                 lastname:"",
@@ -100,7 +103,15 @@ const Signup = props => {
                  <input
                   placeholder='Last Name'
                   name='lastname'
-                  type='lastname'
+                  type='text'
+                  value={user.lastname}
+                  onChange={handleChange}
+                  required
+                />
+                    <input
+                  placeholder='Address'
+                  name='address'
+                  type='text'
                   value={user.lastname}
                   onChange={handleChange}
                   required
@@ -116,11 +127,12 @@ const Signup = props => {
                  <input
                   placeholder='State'
                   name='state'
-                  type='state'
+                  type='text'
                   value={user.state}
                   onChange={handleChange}
                   required
                 />
+                <h4>Account Information</h4>
                 <input
                   placeholder='Username'
                   name='username'

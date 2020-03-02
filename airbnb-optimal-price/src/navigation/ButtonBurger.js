@@ -22,7 +22,7 @@ body {
 	position: absolute;
 	top: 0;
 	z-index: 999;
-	background-color: linear-gradient(to right, #3a6186cb, #89253eb4);
+	background:  maroon;  /*linear-gradient(to right, #3a6186cb, #89253eb4); */
 	right: -35vw;
 	-webkit-transition: right 0.3s ease-in;
 	-o-transition: right 0.3s ease-in;
@@ -64,11 +64,11 @@ img{
 	.nav {
 	border:none;
     align-self:flex-end;
-    background: linear-gradient(to right, #3a6186cb, #89253eb4);
+    background:  maroon;  /*linear-gradient(to right, #3a6186cb, #89253eb4); */
 	opacity:1;
 	box-shadow: -10px 10px 5px black;
 	width: 50vw;
-	right: -55vw;
+	right: -5000vw;
 	}
 }
 
@@ -115,7 +115,9 @@ img{
         text-decoration:none;
 
 }
-
+a:hover{
+		color:red;
+}
 `
 
 class ButtonBurger extends React.Component {

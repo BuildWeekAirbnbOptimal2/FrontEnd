@@ -8,7 +8,7 @@ const DesktopNavBar = styled.nav`
     flex-flow: row nowrap;
     justify-content: space-evenly;
     align-items: center;
-    background: linear-gradient(to right, #3a6186cb, #89253eb4);
+    background:  maroon;  /*linear-gradient(to right, #3a6186cb, #89253eb4); */
     opacity:1;
     color: white;
     height: 15vh;

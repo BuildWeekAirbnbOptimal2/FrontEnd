@@ -114,7 +114,7 @@ const submitForm = e => {
       <br/>
         <br/>
        <label>Smoke Detectors?</label>
-       br//>
+       <br/>
        <input 
        id='smoke'
        name='smoke'

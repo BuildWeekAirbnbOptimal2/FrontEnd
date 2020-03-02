@@ -23,6 +23,7 @@ const DesktopNavBar = styled.nav`
     text-decoration:none;
     color:white;
     text-shadow: 3px 3px 3px black;
+
 }
 
 .nav-links{
@@ -57,7 +58,10 @@ const DesktopNav = () => {
         
             
         <DesktopNavBar>
-               <Link  to='/src/components/' className='logo'  ><img src={logo}   alt="logo-img"/>Airbnb Pricer</Link>
+               <Link  to='/src/components/' className='logo'  >
+                    <img src={logo}  
+                         alt="logo-img"/>
+                            Airbnb Pricer</Link>
                     <ul className='nav-links'>
                         <li>
                             <Link 

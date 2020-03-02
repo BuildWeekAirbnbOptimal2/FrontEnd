@@ -35,7 +35,7 @@ const submitForm = e => {
 
             <form onSubmit= {submitForm}>
                  <lable htmlFor='title'>Property Title</lable>
-                   <br></br>
+                   <br/>
                     <input 
                     id='title'
                     type='text'
@@ -44,11 +44,11 @@ const submitForm = e => {
                     placeholder='title'
                     value={property.title}
                     />
-                <br></br> 
-             <br></br>
-              <br></br>
+                <br/> 
+             <br/>
+              <br/>
                 <lable htmlFor='property'>Summery the Property</lable>
-                  <br></br>
+                  <br/>
                 <textarea 
                 id='property'
                 name='body'
@@ -56,10 +56,10 @@ const submitForm = e => {
                 onChange={handleChanges}
                 value={property.body}
                 />
-            <br></br>
+            <br/>
         
       <label>Property Type</label>
-      <br></br>
+      <br/>
      
        <select name='propertyType' id='propertyType'>
           
@@ -73,10 +73,10 @@ const submitForm = e => {
             <option value="">Tree House</option>
             <option value="">Other</option>
        </select>
-       <br></br>
-       <br></br>
+       <br/>
+       <br/>
        <label>Room Type</label>
-       <br></br>
+       <br/>
       
         <select name='propertyType' id='propertyType'>
            
@@ -87,78 +87,78 @@ const submitForm = e => {
              <option value="">Hotel Room</option>
              <option value="">Shared Apartment</option>
         </select>
-        <br></br>
-        <br></br>
+        <br/>
+        <br/>
        <label>Book Instantly?</label>
-       <br></br>
+       <br/>
        <input 
        id='Ibook'
        name='Ibook'
        type='checkbox'
        value=''
        />
-       <br></br>
-       <br></br>
-       <br></br>
-       <br></br>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
       <label>Hot Water?</label>
-      <br></br>
+      <br/>
       <input 
       id='water'
       name='water'
       type='checkbox'
       value=''
       />
-      <br></br>
-      <br></br>
-      <br></br>
-        <br></br>
+      <br/>
+      <br/>
+      <br/>
+        <br/>
        <label>Smoke Detectors?</label>
-       <br></br>
+       br//>
        <input 
        id='smoke'
        name='smoke'
        type='checkbox'
        value=''
        />
-       <br></br>
-       <br></br>
-       <br></br>
-        <br></br>
+       
+       <br/>
+       <br/>
+        <br/>
        <label>Near Shopping Center?</label>
-       <br></br>
+       <br/>
        <input 
        id='Ibook'
        name='Ibook'
        type='checkbox'
        value=''
        />
-       <br></br>
-       <br></br>
-       <br></br>
-        <br></br>
+       <br/>
+       <br/>
+       <br/>
+        <br/>
        <label>Near Public Trasportation?</label>
-       <br></br>
+       <br/>
        <input 
        id='publicT'
        name='publicT'
        type='checkbox'
        value=''
        />
-       <br></br>
-       <br></br>
-       <br></br>
-        <br></br>
+       <br/>
+       <br/>
+       <br/>
+        <br/>
        <label>Pets Allowed?</label>
-       <br></br>
+       <br/>
        <input 
        id='pets'
        name='pets'
        type='checkbox'
        value=''
        />
-       <br></br>
-       <br></br>
+       <br/>
+       <br/>
     <PropertyUpload />
      <button type='submit'>Add Property</button>
        </form>

@@ -3,10 +3,14 @@ import DesktopNav from './DesktopNav';
 import Mobile from './Mobile';
 import styled from 'styled-components'
 
+
 const NavBarCon = styled.div`
     display:flex;
     flex-flow:column nowrap;
     justify-content:flex-start;
+
+
+    
 `
 export default class NavBar extends Component {
     render() {

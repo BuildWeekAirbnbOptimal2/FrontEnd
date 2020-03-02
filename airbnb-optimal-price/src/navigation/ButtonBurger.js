@@ -23,10 +23,10 @@ body {
 	top: 0;
 	z-index: 999;
 	background-color: linear-gradient(to right, #3a6186cb, #89253eb4);
-	left: -35vw;
-	-webkit-transition: left 0.3s ease-in;
-	-o-transition: left 0.3s ease-in;
-	transition: left 0.3s ease-in;
+	right: -35vw;
+	-webkit-transition: right 0.3s ease-in;
+	-o-transition: right 0.3s ease-in;
+	transition: right 0.3s ease-in;
 	align-self:flex-end;
 	box-shadow: -10px 10px 5px black;
 	
@@ -45,13 +45,13 @@ body {
 
 }
 
-    .link{
+.link{
         color:white;
         font-size:2.5vh;
         text-decoration:none;
     
 }
-    img{
+img{
         align-self:center;
         height:10vh;
         width:20vw;
@@ -68,7 +68,7 @@ body {
 	opacity:1;
 	box-shadow: -10px 10px 5px black;
 	width: 50vw;
-	left: -55vw;
+	right: -55vw;
 	}
 }
 
@@ -83,15 +83,16 @@ body {
 }
 
 .nav.show {
-	left: 0;
+	right: 0;
 }
 
 .menu-button {
-	position: relative;
+	position:relative;
 	z-index: 99;
 	font-size: 36px;
 	cursor: pointer;
 	padding: 10px 8px;
+	
 }
 
 .menu-items {

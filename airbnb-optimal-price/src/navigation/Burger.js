@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const BurgerStyles = styled.button`
   position: absolute;
   top: 5%;
-  left: 2rem;
+  right: 2rem;
   display: none;
   flex-direction: column;
   justify-content: space-around;

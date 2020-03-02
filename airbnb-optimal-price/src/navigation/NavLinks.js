@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import logo from './logo.png'
 
 
 const NavLinks = () => {
 
     return(
         <div>
-        <Link to='/src/components/' className='logo'>Airbnb Pricer</Link>
+        <Link to='/src/components/' className='logo'>Airbnb Pricer<img src={logo}   alt="logo-img"/></Link>
         <ul className='nav-links'>
             
             <li>

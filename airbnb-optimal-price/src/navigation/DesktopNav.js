@@ -1,58 +1,14 @@
 import React from 'react'
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
+import logo from './logo.png';
 
-// const StyledBurger = styled.button`
-//   position: absolute;
-//   top: 5%;
-//   left: 2rem;
-//   display: flex;
-//   flex-direction:  column-reverse;
-//   justify-content: space-around;
-//   width: 2rem;
-//   height: 2rem;
-//   background: white;
-//   border: none;
-//   cursor: pointer;
-//   display:none;
-//   padding: 0;
-//   z-index: 10;
-//   @media screen and (max-width:768px) {
-//     display:block;
-// }
-//   &:focus {
-//     outline: none;
-//   }
-
-//   div {
-//     width: 2rem;
-//     height: 0.25rem;
-//     background: ${({ open }) => open ? '#0D0C1D' : '#EFFFFA'};
-//     border-radius: 10px;
-//     transition: all 0.3s linear;
-//     position: relative;
-//     transform-origin: 1px;
-
-//     :first-child {
-//       transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
-//     }
-
-//     :nth-child(2) {
-//       opacity: ${({ open }) => open ? '0' : '1'};
-//       transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
-//     }
-
-//     :nth-child(3) {
-//       transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
-//     }
-//   }
-//`
 const DesktopNavBar = styled.nav`
 display:flex;
 flex-flow: row nowrap;
 justify-content: space-evenly;
 align-items: center;
-background: maroon;
+background: linear-gradient(to right, #3a6186cb, #89253eb4);
 opacity:1;
 color: white;
 height: 15vh;
@@ -64,6 +20,8 @@ box-shadow: 10px 10px 5px black;
     display:flex;
     font-size: 5vh;
     font-weight:bold;
+    text-decoration:none;
+    color:white;
     text-shadow: 3px 3px 3px black;
 }
 
@@ -83,21 +41,25 @@ box-shadow: 10px 10px 5px black;
     text-decoration:none;
     
 }
+img{
+height:8vh;
+filter: brightness(0) invert(1);
+}
+
+ a:hover {
+    color: red;
+}
 `
-// const Burger = ({ open, setOpen }) => {
-//     return (
-//       <StyledBurger open={open} onClick={() => setOpen(!open)}>
-//         <div />
-//         <div />
-//         <div />
-//       </StyledBurger>
-//     )
-//   }
+
 const DesktopNav = () => {
-  
+ 
         return (
+        
+            
             <DesktopNavBar>
-                <Link to='/src/components/' className='logo'>Airbnb Pricer</Link>
+                
+                
+                <Link  to='/src/components/' className='logo'  ><img src={logo}   alt="logo-img"/>Airbnb Pricer</Link>
                 <ul className='nav-links'>
                     
                     <li>
@@ -117,6 +79,7 @@ const DesktopNav = () => {
         {/* <Burger />*/}
                
             </DesktopNavBar>
+            
         )
     }
 

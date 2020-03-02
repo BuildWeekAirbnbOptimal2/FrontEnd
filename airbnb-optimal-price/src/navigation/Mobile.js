@@ -10,7 +10,7 @@ background: #500c2f;
 border:none;
 width: 50vw;
 align-self:flex-end;
-background:  maroon ;
+background: linear-gradient(to right, #3a6186cb, #89253eb4);
 opacity:1;
 box-shadow: -10px 10px 5px black;
 display:none;
@@ -21,10 +21,14 @@ display:none;
 .logo{
     display:flex;
     flex-direction:column;
-    font-size: 5vh;
+    font-size: 2.5vh;
     font-weight:bold;
     text-shadow: 3px 3px 3px black;
     color:white;
+    margin-left:3.5rem;
+    text-decoration:none;
+
+    
 }
 .nav-links{
     display:flex;
@@ -41,6 +45,15 @@ display:none;
     font-size:2.5vh;
     text-decoration:none;
     
+}
+img{
+align-self:center;
+height:10vh;
+width:20vw;
+filter: brightness(0) invert(1);
+}
+a:hover{
+    color:red;
 }
 `
 

@@ -29,7 +29,7 @@ const addNewPhoto = photos => {
 }
 return(
     <div>
-    <h1>My Properties</h1>
+    <h1>Add Properties</h1>
     <PropertyForm addNewPropery={addNewPropery} addNewPhoto={addNewPhoto}/>
     <Property properties={properties}/>
 

@@ -1,20 +1,12 @@
-import React from 'react'
-import ButtonBurger from './ButtonBurger';
-
-
-
-
-      
+import React from "react";
+import ButtonBurger from "./ButtonBurger";
 
 const Mobile = () => {
-  
-        return (
-
-             <div>
-                <ButtonBurger/>
-            </div>
-        )
-    }
-
+  return (
+    <div>
+      <ButtonBurger />
+    </div>
+  );
+};
 
 export default Mobile;

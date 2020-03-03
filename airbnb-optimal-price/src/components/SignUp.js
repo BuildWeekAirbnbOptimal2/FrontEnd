@@ -15,11 +15,11 @@ const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   width: 25%;
-  height: 550px;
+  height: 500px;
   border: 3px solid #c9c7c7;
   border-radius:15px;
   margin-left: 40%;
-  margin-bottom: 20%;
+  margin-bottom: 10%;
   box-shadow: 5px 10px 20px #c9c7c7 ;
   align-items: center;
    
@@ -29,7 +29,7 @@ const FormContainer = styled.form`
       border: 1.5px solid gray;
       border-radius:5px;
     padding: 5px;
-    margin-bottom: 10px
+    margin-bottom: 20px
   }
 
   button {

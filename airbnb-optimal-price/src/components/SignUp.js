@@ -47,9 +47,6 @@ const Signup = props => {
     const [user, setUser] = useState({
         firstname: "",
         lastname:"",
-        address: "",
-        city:'',
-        state:"",
         password: "",
         username: ''
     });
@@ -67,7 +64,7 @@ const Signup = props => {
       e.preventDefault();
   
          axiosWithAuth()
-            .post("TEST",user)
+            .post("/user/register",user)
             .then(res => {
             console.log('TEST', res);
             setUser({
@@ -108,31 +105,6 @@ const Signup = props => {
                   onChange={handleChange}
                   required
                 />
-                    <input
-                  placeholder='Address'
-                  name='address'
-                  type='text'
-                  value={user.lastname}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  placeholder='City'
-                  name='city'
-                  type='text'
-                  value={user.city}
-                  onChange={handleChange}
-                  required
-                />
-                 <input
-                  placeholder='State'
-                  name='state'
-                  type='text'
-                  value={user.state}
-                  onChange={handleChange}
-                  required
-                />
-                <h4>Account Information</h4>
                 <input
                   placeholder='Username'
                   name='username'

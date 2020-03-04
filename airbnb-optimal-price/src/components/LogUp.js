@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import SignUp from './SignUp'
 import Login from './Login'
+
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin: 40px auto;
+`
 
 const LogUp = () => {
 
@@ -13,7 +21,7 @@ const LogUp = () => {
   // }
 
   return (
-    <div style={{ display: 'flex', width: '100%', justifyContent: 'space-around', margin: '40px auto' }}>
+    <div>
       { isLogging ? (
         <Login isLogging={isLogging} setLogging={setLogging} />
       ) : (

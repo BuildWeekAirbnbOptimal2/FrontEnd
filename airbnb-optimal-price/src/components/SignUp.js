@@ -19,7 +19,8 @@ const FormContainer = styled.form`
   border: 3px solid #c9c7c7;
   border-radius:15px;
   /* margin-left: 40%; */
-  margin-bottom: 10%;
+  /* margin-bottom: 10%; */
+  margin: 80px auto;
   box-shadow: 5px 10px 20px #c9c7c7 ;
   align-items: center;
    

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios';
 import styled from "styled-components";
 
 
@@ -62,11 +62,12 @@ const Signup = props => {
   
     const handleSubmit = e => {
       e.preventDefault();
-  
-         axiosWithAuth()
-            .post("/user/register",user)
+      setIsLoading(true);
+
+         axios()
+            .post("/user/login", user)
             .then(res => {
-            console.log('TEST', res);
+            console.log('Hello, Test', res);
             setUser({
                 firstname: "",
                 lastname:"",
@@ -75,7 +76,7 @@ const Signup = props => {
                 password: "",
                 username: ''
             });
-          props.history.push('');
+          props.history.push("/login");
           window.location.reload(false);
         })
         .catch(err => {

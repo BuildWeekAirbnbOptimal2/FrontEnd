@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import { axiosWithAuth } from '../utils/axiosWithAuth'
+
 const FormWrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -15,7 +17,6 @@ const FormContainer = styled.form`
   width: 100%;
   align-items: center;
    
-
   input {
     padding: 5px;
     margin-bottom: 10px
@@ -34,25 +35,55 @@ const FormContainer = styled.form`
 
 const Login = () => {
 
-  const [user, setUser] = useState({
+  const [credentials, setCredentials] = useState({
     username: '',
     password: ''
   })
 
-const handleSubmit = e => {
+const handleChange = e => {
   e.preventDefault()
-  setUser({
+  setCredentials({
+    ...credentials,
     [e.target.name]: e.target.value
   })
-  console.log(user)
+  console.log(credentials)
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault()
+
+  axiosWithAuth()
+  .post('/user/login', credentials)
+  .then(res => {
+    // not sure what the shape of the data is yet (res.data.token ?).
+    localStorage.setItem('token', res.data.token)
+    console.log('token: ', res.data.token)
+    // props.history.push('./listings')
+  })
+  .catch(err => [
+    console.log(err)
+  ])
+
 }
  
   return (
     <FormWrapper>
-      <FormContainer onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column'}}>
+      <FormContainer onSubmit={handleSubmit} >
       <h2>Sign in</h2>
-        <input type="text" name="name" placeholder="username" />
-        <input type="password" name="password" placeholder="password"/>
+        <input 
+        type="text" 
+        name="name" 
+        placeholder="username" 
+        onChange={handleChange}
+        required
+        />
+        <input 
+        type="password" 
+        name="password" 
+        placeholder="password"
+        onChange={handleChange}
+        required
+        />
         <button>Log In</button>
       </FormContainer>
     </FormWrapper>

@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { logUpContext } from '../utils/Store'
 
 const FormWrapper = styled.div`
   width: 100%;
@@ -52,6 +53,8 @@ const ToggleBtns = styled.div`
 
 const Login = (props) => {
 
+  const [isLogging, setLogging] = useContext(logUpContext)
+
   console.log(props)
   const [credentials, setCredentials] = useState({
     username: '',
@@ -86,7 +89,7 @@ const handleSubmit = (e) => {
 
 const handleToggle = (e) => {
   e.preventDefault()
-  props.setLogging(!props.isLogging)
+  setLogging(!isLogging)
 }
 
 console.log(props)

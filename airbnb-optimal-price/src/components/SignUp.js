@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from "styled-components";
+
+import { logUpContext } from '../utils/Store'
 
 
 const FormWrapper = styled.div`
@@ -70,6 +72,8 @@ const Signup = props => {
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const [isLogging, setLogging] = useContext(logUpContext)
+
     const handleChange = e => {
       setUser({
         ...user,
@@ -102,7 +106,7 @@ const Signup = props => {
 
     const handleToggle = (e) => {
       e.preventDefault()
-      props.setLogging(!props.isLogging)
+      setLogging(!isLogging)
     }
   
     return (

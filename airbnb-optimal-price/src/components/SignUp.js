@@ -18,7 +18,7 @@ const FormContainer = styled.form`
   height: 500px;
   border: 3px solid #c9c7c7;
   border-radius:15px;
-  margin-left: 40%;
+  /* margin-left: 40%; */
   margin-bottom: 10%;
   box-shadow: 5px 10px 20px #c9c7c7 ;
   align-items: center;
@@ -42,6 +42,22 @@ const FormContainer = styled.form`
     border-radius: 4px;
   
   }`
+
+const ToggleBtns = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+  margin: 20px auto;
+
+button {
+  background: transparent;
+  color: lightblue;
+  border: none;
+  font-size: 1.2rem;
+  outline: transparent;
+  cursor: pointer;  
+}
+`
 
 const Signup = props => {
     const [user, setUser] = useState({
@@ -82,9 +98,14 @@ const Signup = props => {
           console.log(err);
         });
     };
+
+    const handleToggle = (e) => {
+      e.preventDefault()
+      props.setLogging(!props.isLogging)
+    }
   
     return (
-   
+   <>  
      <FormContainer>
           <h1>Sign Up</h1>
           <FormWrapper onSubmit={handleSubmit}>
@@ -129,8 +150,11 @@ const Signup = props => {
                
          </div>
         </FormWrapper>
+              <ToggleBtns >
+                <button onClick={handleToggle} >Log In</button>
+              </ToggleBtns>
         </FormContainer>
-        
+        </>
     );
   };
 export default Signup;

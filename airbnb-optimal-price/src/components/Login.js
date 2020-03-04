@@ -7,6 +7,7 @@ const FormWrapper = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   text-align: center;
   margin: 80px auto 0;
 `
@@ -33,15 +34,32 @@ const FormContainer = styled.form`
   }
 ` 
 
-const Login = () => {
+const ToggleBtns = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+    margin: 20px auto;
 
+  button {
+    background: transparent;
+    color: lightblue;
+    border: none;
+    font-size: 1.2rem;
+    outline: transparent;
+    cursor: pointer;  
+  }
+`
+
+const Login = (props) => {
+
+  console.log(props)
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
   })
 
 const handleChange = e => {
-  e.preventDefault()
+  // e.preventDefault()
   setCredentials({
     ...credentials,
     [e.target.name]: e.target.value
@@ -65,6 +83,13 @@ const handleSubmit = (e) => {
   ])
 
 }
+
+const handleToggle = (e) => {
+  e.preventDefault()
+  props.setLogging(!props.isLogging)
+}
+
+console.log(props)
  
   return (
     <FormWrapper>
@@ -72,9 +97,10 @@ const handleSubmit = (e) => {
       <h2>Sign in</h2>
         <input 
         type="text" 
-        name="name" 
+        name="username" 
         placeholder="username" 
         onChange={handleChange}
+        value={credentials.username}
         required
         />
         <input 
@@ -82,10 +108,14 @@ const handleSubmit = (e) => {
         name="password" 
         placeholder="password"
         onChange={handleChange}
+        value={credentials.password}
         required
         />
         <button>Log In</button>
       </FormContainer>
+      <ToggleBtns >
+        <button onClick={handleToggle}>Sign Up</button>
+      </ToggleBtns>
     </FormWrapper>
   )
 }

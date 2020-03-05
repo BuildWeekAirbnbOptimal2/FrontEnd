@@ -8,6 +8,7 @@ const StyledIndex = styled.div`
 
 padding-left: 3vw;
 padding-bottom:3vh;
+
 }
 
 `;

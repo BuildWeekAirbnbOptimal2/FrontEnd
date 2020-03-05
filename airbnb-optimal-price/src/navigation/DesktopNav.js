@@ -5,6 +5,7 @@ import logo from "./logo.png";
 
 const DesktopNavBar = styled.nav`
   display: flex;
+  /* margin:auto; */
   flex-flow: row nowrap;
   justify-content: space-evenly;
   align-items: center;

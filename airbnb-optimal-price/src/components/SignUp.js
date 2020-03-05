@@ -85,7 +85,6 @@ const Signup = () => {
   
     const handleSubmit = e => {
       e.preventDefault();
-<<<<<<< HEAD
   
       axiosWithAuth()
         .post("/user/register", user)
@@ -95,24 +94,6 @@ const Signup = () => {
           setLogging(!isLogging)
                       
           console.log('signed up!')
-=======
-      setIsLoading(true);
-
-         axiosWithAuth()
-            .post("/user/login", user)
-            .then(res => {
-            console.log('Hello, Test', res);
-            setUser({
-                firstname: "",
-                lastname:"",
-                city:'',
-                state:"",
-                password: "",
-                username: ''
-            });
-          props.history.push("/login");
-          window.location.reload(false);
->>>>>>> a19d5404573ae2fe6b75ec4f804f0baf587a8a8c
         })
         .catch(err => {
          console.log(err);

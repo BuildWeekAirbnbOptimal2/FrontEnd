@@ -18,10 +18,10 @@ const PropertyList = () => {
     <div>
 
           <button onClick={() => deleteListing(listing)}>
-              <span className="delete" onClick={e => {
+              <span onClick={e => {
                     e.stopPropagation();
                     deleteListing (listing) }}>
-                  x
+                X
                   </span>
               </button>
 

@@ -152,7 +152,7 @@ const Signup = props => {
               <div>
                 <button type='submit'>Sign Up</button>
               </div>
-                 {/* <link to=''>I already have an account</link> */}
+
                
          </div>
         </FormWrapper>

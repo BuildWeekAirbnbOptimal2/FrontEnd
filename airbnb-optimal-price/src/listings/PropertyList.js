@@ -1,30 +1,33 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
+
+//Property Components
+import AddProperty from './AddProperty';
+import Property from './Property';
 
 
 const PropertyList = () => {
  
-
-  const deleteListing = () => {
-    axiosWithAuth()
-      .delete(`/listings${id}`)
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => console.log("Something's broken", err))      
-  };
-
-  return (
-    <div>
-
-          <button onClick={() => deleteListing(listing)}>
-              <span onClick={e => {
-                    e.stopPropagation();
-                    deleteListing (listing) }}>
-                X
-                  </span>
-              </button>
-
- </div>
-  )}
+    const [listings, setListings] = useState([])
+  
+    useEffect(() => {
+      axiosWithAuth()
+      .get("/hostId/properties")
+      .then(res => setListings(res.user_properties))
+      .catch(err => console.error(err))
+    })
+  
+    return(
+      <>
+        <h1> My Listings</h1>
+        {listings.map(listing => (
+          <div key={listing.id}>
+            <Property listing={listing} />
+          </div>
+        ))}
+      </>
+    )
+  
+  }
+  
 export default PropertyList;

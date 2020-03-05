@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
-import axios from 'axios';
+import React, {useState, useContext} from 'react';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from "styled-components";
+
+import { logUpContext } from '../utils/Store'
 
 
 const FormWrapper = styled.div`
@@ -18,8 +20,9 @@ const FormContainer = styled.form`
   height: 500px;
   border: 3px solid #c9c7c7;
   border-radius:15px;
-  margin-left: 40%;
-  margin-bottom: 10%;
+  /* margin-left: 40%; */
+  /* margin-bottom: 10%; */
+  margin: 80px auto;
   box-shadow: 5px 10px 20px #c9c7c7 ;
   align-items: center;
    
@@ -43,6 +46,22 @@ const FormContainer = styled.form`
   
   }`
 
+const ToggleBtns = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+  margin: 20px auto;
+
+button {
+  background: transparent;
+  color: lightblue;
+  border: none;
+  font-size: 1.2rem;
+  outline: transparent;
+  cursor: pointer;  
+}
+`
+
 const Signup = props => {
     const [user, setUser] = useState({
         firstname: "",
@@ -52,6 +71,8 @@ const Signup = props => {
     });
 
     const [isLoading, setIsLoading] = useState(false);
+
+    const [isLogging, setLogging] = useContext(logUpContext)
 
     const handleChange = e => {
       setUser({
@@ -83,9 +104,14 @@ const Signup = props => {
           console.log(err);
         });
     };
+
+    const handleToggle = (e) => {
+      e.preventDefault()
+      setLogging(!isLogging)
+    }
   
     return (
-   
+   <>  
      <FormContainer>
           <h1>Sign Up</h1>
           <FormWrapper onSubmit={handleSubmit}>
@@ -130,8 +156,11 @@ const Signup = props => {
                
          </div>
         </FormWrapper>
+              <ToggleBtns >
+                <button onClick={handleToggle} >Log In</button>
+              </ToggleBtns>
         </FormContainer>
-        
+        </>
     );
   };
 export default Signup;

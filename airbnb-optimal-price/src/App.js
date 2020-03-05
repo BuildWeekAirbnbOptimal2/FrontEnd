@@ -1,14 +1,13 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //Components
-import Login from './components/Login'
-import  Signup  from './components/SignUp';
+import LogUp from './components/LogUp'
 
 function App() {
   return (
     <div className="App">
-      <Login />
-      <Signup/>
+      <LogUp />
     </div>
   );
 }

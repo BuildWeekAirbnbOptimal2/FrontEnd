@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 
-export const logUpContext = React.createContext(false);
+export const LogUpContext = React.createContext(false)
+export const ListingsContext = React.createContext([])
 
 const Store = ({children}) => {
   const [isLogging, setLogging] = useState(false)
+  const [hostListings, setHostListings] = useState([])
 
   return (
-    <logUpContext.Provider value={[isLogging, setLogging]} >
+    <LogUpContext.Provider value={[isLogging, setLogging]} >
+      
       {children}
-    </logUpContext.Provider>
+    </LogUpContext.Provider>
   )
 }
 

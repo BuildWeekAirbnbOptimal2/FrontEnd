@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import { logUpContext } from '../utils/Store'
+import { LogUpContext } from '../utils/Store'
 
 const FormWrapper = styled.div`
   width: 100%;
@@ -53,7 +53,7 @@ const ToggleBtns = styled.div`
 
 const Login = (props) => {
 
-  const [isLogging, setLogging] = useContext(logUpContext)
+  const [isLogging, setLogging] = useContext(LogUpContext)
 
   console.log(props)
   const [credentials, setCredentials] = useState({
@@ -62,7 +62,6 @@ const Login = (props) => {
   })
 
 const handleChange = e => {
-  // e.preventDefault()
   setCredentials({
     ...credentials,
     [e.target.name]: e.target.value
@@ -71,7 +70,7 @@ const handleChange = e => {
 }
 
 const handleSubmit = (e) => {
-  e.preventDefault()
+  // e.preventDefault()
 
   axiosWithAuth()
   .post('/user/login', credentials)
@@ -79,7 +78,7 @@ const handleSubmit = (e) => {
     // not sure what the shape of the data is yet (res.data.token ?).
     localStorage.setItem('token', res.data.token)
     console.log('token: ', res.data.token)
-    // props.history.push('./listings')
+    props.history.push('./listings')
   })
   .catch(err => [
     console.log(err)

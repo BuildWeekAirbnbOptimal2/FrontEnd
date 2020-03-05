@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from "styled-components";
 
-import { logUpContext } from '../utils/Store'
+import { LogUpContext } from '../utils/Store'
 
 
 const FormWrapper = styled.div`
@@ -62,19 +62,21 @@ button {
 }
 `
 
-const Signup = props => {
+const Signup = () => {
     const [user, setUser] = useState({
         firstname: "",
-        lastname:"",
+        lastname: "",
+        email: "",
         password: "",
-        username: ''
+        username: ""
     });
 
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
-    const [isLogging, setLogging] = useContext(logUpContext)
+    const [isLogging, setLogging] = useContext(LogUpContext)
 
     const handleChange = e => {
+      e.preventDefault()
       setUser({
         ...user,
         [e.target.name]: e.target.value
@@ -85,19 +87,13 @@ const Signup = props => {
       e.preventDefault();
   
          axiosWithAuth()
-            .post("/user/register",user)
+            .post("/user/register", user)
             .then(res => {
-            console.log('TEST', res);
-            setUser({
-                firstname: "",
-                lastname:"",
-                city:'',
-                state:"",
-                password: "",
-                username: ''
-            });
-          props.history.push('');
-          window.location.reload(false);
+              console.log('TEST', res);
+              localStorage.setItem('token', res.data.payload)
+            
+          
+          console.log('signed up!')
         })
         .catch(err => {
           console.log(err);
@@ -118,16 +114,24 @@ const Signup = props => {
                 <input
                   type='text'
                   placeholder='First Name'
-                  name='firstName'
-                  value={user.firstName}
+                  name='firstname'
+                  value={user.firstname}
                   onChange={handleChange}
                   required
                 />
-                 <input
+                <input
                   placeholder='Last Name'
                   name='lastname'
                   type='text'
                   value={user.lastname}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  placeholder='Email'
+                  name='email'
+                  type='email'
+                  value={user.email}
                   onChange={handleChange}
                   required
                 />
@@ -149,15 +153,15 @@ const Signup = props => {
                 />
                 
               <div>
-                <button type='submit'>Sign Up</button>
+                <button type="submit">Sign Up</button>
               </div>
                  {/* <link to=''>I already have an account</link> */}
                
          </div>
         </FormWrapper>
-              <ToggleBtns >
-                <button onClick={handleToggle} >Log In</button>
-              </ToggleBtns>
+          <ToggleBtns >
+            <button onClick={handleToggle}>Log In</button>
+          </ToggleBtns>
         </FormContainer>
         </>
     );

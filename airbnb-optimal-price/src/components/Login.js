@@ -66,19 +66,18 @@ const handleChange = e => {
     ...credentials,
     [e.target.name]: e.target.value
   })
-  console.log(credentials)
 }
 
 const handleSubmit = (e) => {
-  // e.preventDefault()
+  e.preventDefault()
 
   axiosWithAuth()
   .post('/user/login', credentials)
   .then(res => {
     // not sure what the shape of the data is yet (res.data.token ?).
     localStorage.setItem('token', res.data.token)
-    console.log('token: ', res.data.token)
-    props.history.push('./listings')
+    console.log('token: ', res.data.userId)
+    props.history.push('/host/35/properties')
   })
   .catch(err => [
     console.log(err)

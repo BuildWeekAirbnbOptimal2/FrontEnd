@@ -5,15 +5,16 @@ import PrivateRoute from './components/PrivateRoute'
 //Components
 import LogUp from './components/LogUp'
 import AllListings from './listings/AllListings'
+import Users from './components/user'
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <PrivateRoute exact path='/listings' component={AllListings}/>
-          <Route  path='/' component={LogUp}/>
-          <LogUp />
+          <Route exact  path='/login' component={LogUp}/>
+          <PrivateRoute exact path='/' component={Users}/>
+          <Route exact path="/host/:id/properties" component={Users} />
         </Switch>
       </Router>
     </div>

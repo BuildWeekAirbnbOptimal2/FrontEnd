@@ -86,20 +86,20 @@ const Signup = () => {
     const handleSubmit = e => {
       e.preventDefault();
   
-         axiosWithAuth()
-            .post("/user/register", user)
-            .then(res => {
-              console.log('TEST', res);
-              localStorage.setItem('token', res.data.payload)
-            
-          
+      axiosWithAuth()
+        .post("/user/register", user)
+        .then(res => {
+          console.log('TEST', res);
+          localStorage.setItem('token', res.data.payload)
+          setLogging(!isLogging)
+                      
           console.log('signed up!')
         })
         .catch(err => {
-          console.log(err);
+         console.log(err);
         });
     };
-
+          
     const handleToggle = (e) => {
       e.preventDefault()
       setLogging(!isLogging)

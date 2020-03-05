@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 
-const PropertyPage  = (id) => {
+const ListingsPage  = (id) => {
   const [listing, setListing] = useState();
 
     useEffect(() => {
@@ -23,4 +23,4 @@ const PropertyPage  = (id) => {
   }
 
 
-export default PropertyPage;
+export default ListingsPage;

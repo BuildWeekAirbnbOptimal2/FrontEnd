@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //Components
 import LogUp from './components/LogUp'
-import ListingsPage from './listings/ListingsPage';
+// import ListingsPage from './listings/ListingsPage';
+import PropertyList from './listings/PropertyList';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
       <LogUp />
       {/* <ListingsPage/> */}
+      <PropertyList/>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import {axiosWithAuth} from 'axios';
 import styled from "styled-components";
 
 import { logUpContext } from '../utils/Store'
@@ -85,7 +85,7 @@ const Signup = props => {
       e.preventDefault();
       setIsLoading(true);
 
-         axios()
+         axiosWithAuth()
             .post("/user/login", user)
             .then(res => {
             console.log('Hello, Test', res);

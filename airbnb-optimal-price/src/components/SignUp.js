@@ -62,7 +62,8 @@ button {
 }
 `
 
-const Signup = props => {
+const  Signup =()=> {
+  const [isLogging, setLogging] = useContext(LogUpContext)
     const [user, setUser] = useState({
         firstname: "",
         lastname:"",
@@ -71,97 +72,91 @@ const Signup = props => {
         password: ""
        
     });
-  };
   
-  
-    const handleSubmit = e => {
-      e.preventDefault();
-      setIsLoading(true);
-console.log(user);
-         axios
-            .post("https://airbnboptimal.herokuapp.com/user/register", user)
-            .then(res => {
-            console.log( res);
-            setUser({
-                firstname: "",
-                lastname:"",
-                email:"",
-                password: "",
-                username: ''
-            });
-          props.history.push("/login");
-          window.location.reload(false);
-        })
-        setLogging(!isLogging)
-        .catch(err => {
-          console.log(err);
-        });
-    };
-          
-    const handleToggle = (e) => {
+    const handleChange = e => {
       e.preventDefault()
-      setLogging(!isLogging)
+      setUser({
+        ...user,
+        [e.target.name]: e.target.value
+      });
     }
-  
-    return (
-      <>  
-        <FormContainer>
-          <h1>Sign Up</h1>
-          <FormWrapper onSubmit={handleSubmit}>
-            <div className='signup'>  
-                <input
-                  type='text'
-                  placeholder='First Name'
-                  name='firstname'
-                  value={user.firstname}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  placeholder='Last Name'
-                  name='lastname'
-                  type='text'
-                  value={user.lastname}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  placeholder='Email'
-                  name='email'
-                  type='email'
-                  value={user.email}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  placeholder='Username'
-                  name='username'
-                  type='text'
-                  value={user.username}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  placeholder='GgitPassword'
-                  name='password'
-                  type='password'
-                  value={user.password}
-                  onChange={handleChange}
-                  required
-                />
-                
-              <div>
-                <button onClick={handleSubmit}>Sign Up</button>
-              </div>
+      const handleSubmit = (e) => {
+        e.preventDefault()
+        
 
-               
-         </div>
-        </FormWrapper>
-          <ToggleBtns >
-            <button onClick={handleToggle}>Log In</button>
-          </ToggleBtns>
-        </FormContainer>
+        axios
+      .post("https://airbnboptimal.herokuapp.com/user/register", user)
+      .then(res => {
+        localStorage.setItem('token', res.data.payload)
+        setLogging(!isLogging)
+                    
+        console.log(user)
+      })
+  };
+        
+  const handleToggle = (e) => {
+    e.preventDefault()
+    setLogging(!isLogging)
+  }
+
+  return (
+ <>  
+   <FormContainer onSubmit = {handleSubmit}>
+        <h1>Sign Up</h1>
+        <FormWrapper >
+          <div className='signup'>  
+              <input
+                type='text'
+                placeholder='First Name'
+                name='firstname'
+                value={user.firstname}
+                onChange={handleChange}
+                required
+              />
+              <input
+                placeholder='Last Name'
+                name='lastname'
+                type='text'
+                value={user.lastname}
+                onChange={handleChange}
+                required
+              />
+              <input
+                placeholder='Email'
+                name='email'
+                type='email'
+                value={user.email}
+                onChange={handleChange}
+                required
+              />
+              <input
+                placeholder='Username'
+                name='username'
+                type='text'
+                value={user.username}
+                onChange={handleChange}
+                required
+              />
+              <input
+                placeholder='Password'
+                name='password'
+                type='password'
+                value={user.password}
+                onChange={handleChange}
+                required
+              />
+              
+            <div>
+              <button type="submit">Sign Up</button>
+            </div>
+
+             
+       </div>
+      </FormWrapper>
+        <ToggleBtns >
+          <button onClick={handleToggle}>Log In</button>
+        </ToggleBtns>
+      </FormContainer>
       </>
-    );
-
+  )};
 export default Signup;

@@ -11,13 +11,13 @@ function App() {
   return (
     <div className="App">
 
-      <Router>
+       <Router>
         <Switch>
           <Route exact  path='/login' component={LogUp}/>
           <PrivateRoute exact path='/' component={Users}/>
           <Route exact path="/host/:id/properties" component={Users} />
         </Switch>
-      </Router>
+      </Router> 
 
     </div>
   );

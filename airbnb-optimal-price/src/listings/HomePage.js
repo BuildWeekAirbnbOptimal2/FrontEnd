@@ -34,8 +34,8 @@ const HomePage = (props) => {
     console.log('userid', userID)
         return (
             <div>
-                <h1>Add Property</h1>
-                <AddProperty/>
+                <h1 style={{ textAlign: 'center' }}>Add Property</h1>
+                <AddProperty id={id}/>
                 <PropertyList listings={property}/>
         
             </div>

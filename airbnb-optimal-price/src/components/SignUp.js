@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import axios from 'axios';
 import styled from "styled-components";
 
-import { logUpContext } from '../utils/Store'
+import { LogUpContext } from '../utils/Store'
 
 
 const FormWrapper = styled.div`
@@ -71,17 +71,8 @@ const Signup = props => {
         password: ""
        
     });
-
-    const [isLoading, setIsLoading] = useState(false);
-
-    const [isLogging, setLogging] = useContext(logUpContext)
-
-    const handleChange = e => {
-      setUser({
-        ...user,
-        [e.target.name]: e.target.value
-      });
-    };
+  };
+  
   
     const handleSubmit = e => {
       e.preventDefault();
@@ -101,19 +92,20 @@ console.log(user);
           props.history.push("/login");
           window.location.reload(false);
         })
+        setLogging(!isLogging)
         .catch(err => {
           console.log(err);
         });
     };
-
+          
     const handleToggle = (e) => {
       e.preventDefault()
       setLogging(!isLogging)
     }
   
     return (
-   <>  
-     <FormContainer>
+      <>  
+        <FormContainer>
           <h1>Sign Up</h1>
           <FormWrapper onSubmit={handleSubmit}>
             <div className='signup'>  
@@ -125,7 +117,7 @@ console.log(user);
                   onChange={handleChange}
                   required
                 />
-                 <input
+                <input
                   placeholder='Last Name'
                   name='lastname'
                   type='text'
@@ -133,7 +125,7 @@ console.log(user);
                   onChange={handleChange}
                   required
                 />
-                    <input
+                <input
                   placeholder='Email'
                   name='email'
                   type='email'
@@ -165,11 +157,11 @@ console.log(user);
                
          </div>
         </FormWrapper>
-              <ToggleBtns >
-                <button onClick={handleToggle} >Log In</button>
-              </ToggleBtns>
+          <ToggleBtns >
+            <button onClick={handleToggle}>Log In</button>
+          </ToggleBtns>
         </FormContainer>
-        </>
+      </>
     );
-  };
+
 export default Signup;

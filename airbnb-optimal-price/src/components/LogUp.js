@@ -2,13 +2,13 @@ import React, { useContext } from 'react'
 import SignUp from './SignUp'
 import Login from './Login'
 
-import { logUpContext } from '../utils/Store'
+import { LogUpContext } from '../utils/Store'
 
 
 
 const LogUp = () => {
 
-  const [isLogging] = useContext(logUpContext)
+  const [isLogging] = useContext(LogUpContext)
 
 
   return (

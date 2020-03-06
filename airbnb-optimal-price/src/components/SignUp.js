@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {axiosWithAuth} from 'axios';
+import axios from 'axios';
 import styled from "styled-components";
 
 import { logUpContext } from '../utils/Store'
@@ -66,8 +66,10 @@ const Signup = props => {
     const [user, setUser] = useState({
         firstname: "",
         lastname:"",
-        password: "",
-        username: ''
+        email:"",
+        username: '',
+        password: ""
+       
     });
 
     const [isLoading, setIsLoading] = useState(false);
@@ -84,16 +86,15 @@ const Signup = props => {
     const handleSubmit = e => {
       e.preventDefault();
       setIsLoading(true);
-
-         axiosWithAuth()
-            .post("/user/login", user)
+console.log(user);
+         axios
+            .post("https://airbnboptimal.herokuapp.com/user/register", user)
             .then(res => {
-            console.log('Hello, Test', res);
+            console.log( res);
             setUser({
                 firstname: "",
                 lastname:"",
-                city:'',
-                state:"",
+                email:"",
                 password: "",
                 username: ''
             });
@@ -119,8 +120,8 @@ const Signup = props => {
                 <input
                   type='text'
                   placeholder='First Name'
-                  name='firstName'
-                  value={user.firstName}
+                  name='firstname'
+                  value={user.firstname}
                   onChange={handleChange}
                   required
                 />
@@ -129,6 +130,14 @@ const Signup = props => {
                   name='lastname'
                   type='text'
                   value={user.lastname}
+                  onChange={handleChange}
+                  required
+                />
+                    <input
+                  placeholder='Email'
+                  name='email'
+                  type='email'
+                  value={user.email}
                   onChange={handleChange}
                   required
                 />
@@ -141,7 +150,7 @@ const Signup = props => {
                   required
                 />
                 <input
-                  placeholder='Password'
+                  placeholder='GgitPassword'
                   name='password'
                   type='password'
                   value={user.password}
@@ -150,7 +159,7 @@ const Signup = props => {
                 />
                 
               <div>
-                <button type='submit'>Sign Up</button>
+                <button onClick={handleSubmit}>Sign Up</button>
               </div>
 
                

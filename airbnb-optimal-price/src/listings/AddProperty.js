@@ -55,6 +55,8 @@ const AddProperty = () => {
             optimal_price: 650
           }
         )
+        console.log(property)
+
       })
       .catch(err => console.error(err));
   };

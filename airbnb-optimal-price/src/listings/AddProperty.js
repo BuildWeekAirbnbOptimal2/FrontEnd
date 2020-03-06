@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import {axiosWithAuth}  from "../utils/axiosWithAuth";
 
-const AddProperty = () => {
+const AddProperty = (props) => {
+  console.log('add', props)
+  // const id = props.match.params.id
+
   const [property, setProperty] = useState(
       {
         id: "",
@@ -33,12 +36,12 @@ const AddProperty = () => {
   const onSubmit = e => {
     e.preventDefault()
     axiosWithAuth()
-      .post("/hostID/properties/", property)
+      .post("host/11/properties/", property)
       .then(res => { 
         setProperty(
           {
             ...property,
-            id: 15,
+            id: 11,
             name: "",
             bedrooms:"" ,
             bathrooms: 1,

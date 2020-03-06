@@ -6,8 +6,8 @@ import AddProperty from './AddProperty';
 import Property from './Property';
 
 
-const PropertyList = () => {
- 
+const PropertyList = (props) => {
+    console.log('p-list', props)
     const [listings, setListings] = useState([])
   
     useEffect(() => {
@@ -20,11 +20,19 @@ const PropertyList = () => {
     return(
       <>
         <h1> My Listings</h1>
-        {listings.map(listing => (
-          <div key={listing.id}>
-            <Property listing={listing} />
-          </div>
-        ))}
+        {listings.length === 0 ? (
+          <>
+        <h2>{props.listings}</h2>
+        </>
+        ) : (
+          listings.map(listing => (
+            <div key={listing.id}>
+              <Property listing={listing} />
+            </div>
+          ))
+          )
+        }
+
       </>
     )
   

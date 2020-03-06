@@ -79,7 +79,7 @@ const handleSubmit = (e) => {
     localStorage.setItem('token', res.data.token)
     console.log('id: ', res.data.userId)
     const id = res.data.userId
-    props.history.push(`/host/${id}/properties`)
+    props.history.push(`/host/${id}/home`)
   })
   .catch(err => [
     console.log(err)

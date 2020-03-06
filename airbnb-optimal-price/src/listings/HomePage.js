@@ -5,12 +5,12 @@ import AddProperty from "./AddProperty";
 
 
 
-const HomePage = () => {
+const HomePage = (props) => {
     const [property, setProperty] = useState ([])
-
+    const id = props.match.params.id
     useEffect(() => {
         axios
-        .get("https://airbnboptimal.herokuapp.com/host/4/properties/")
+        .get(`https://airbnboptimal.herokuapp.com/host/${id}/properties/`)
         // .then(res => setProperty(res.user_properties.id))
          .then(res =>  setProperty(res))
          .then(property => {

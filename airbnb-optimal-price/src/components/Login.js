@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { axiosWithAuth } from '../utils/axiosWithAuth'
@@ -55,7 +56,7 @@ const Login = (props) => {
 
   const [isLogging, setLogging] = useContext(LogUpContext)
 
-  console.log(props)
+
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
@@ -76,8 +77,9 @@ const handleSubmit = (e) => {
   .then(res => {
     // not sure what the shape of the data is yet (res.data.token ?).
     localStorage.setItem('token', res.data.token)
-    console.log('token: ', res.data.userId)
-    props.history.push('/host/35/properties')
+    console.log('id: ', res.data.userId)
+    const id = res.data.userId
+    props.history.push(`/host/${id}/properties`)
   })
   .catch(err => [
     console.log(err)
@@ -90,7 +92,7 @@ const handleToggle = (e) => {
   setLogging(!isLogging)
 }
 
-console.log(props)
+
  
   return (
     <FormWrapper>
@@ -100,6 +102,7 @@ console.log(props)
         type="text" 
         name="username" 
         placeholder="username" 
+        autocomplet="useername"
         onChange={handleChange}
         value={credentials.username}
         required
@@ -108,6 +111,7 @@ console.log(props)
         type="password" 
         name="password" 
         placeholder="password"
+        autocomplet="current-password"
         onChange={handleChange}
         value={credentials.password}
         required
@@ -121,4 +125,4 @@ console.log(props)
   )
 }
 
-export default Login
+export default withRouter(Login)

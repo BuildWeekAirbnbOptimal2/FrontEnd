@@ -4,6 +4,8 @@ import PrivateRoute from './components/PrivateRoute'
 
 //Components
 import LogUp from './components/LogUp'
+import Users from './components/user'
+import Home from './listings/HomePage'
 
 
 
@@ -13,9 +15,9 @@ function App() {
 
        <Router>
         <Switch>
-          <Route exact  path='/login' component={LogUp}/>
-          <PrivateRoute exact path='/' component={Users}/>
-          <Route exact path="/host/:id/properties" component={Users} />
+          <Route exact  path='/' component={LogUp}/>
+          <PrivateRoute exact path='/host/:id/properties' component={Users}/>
+          <Route exact path="/host/:id/home" component={Home} />
         </Switch>
       </Router> 
 

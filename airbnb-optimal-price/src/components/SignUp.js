@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {axiosWithAuth} from 'axios';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from "styled-components";
 
 import { LogUpContext } from '../utils/Store'
@@ -63,40 +63,38 @@ button {
 `
 
 const Signup = () => {
-    const [user, setUser] = useState({
-        firstname: "",
-        lastname: "",
-        email: "",
-        password: "",
-        username: ""
+  const [isLogging, setLogging] = useContext(LogUpContext)
+  
+  const [user, setUser] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    username: "",
+    password: ""
+  });
+  
+  
+  const handleChange = e => {
+    e.preventDefault()
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
     });
-
-    // const [isLoading, setIsLoading] = useState(false);
-
-    const [isLogging, setLogging] = useContext(LogUpContext)
-
-    const handleChange = e => {
-      e.preventDefault()
-      setUser({
-        ...user,
-        [e.target.name]: e.target.value
-      });
-    };
+  };
+  
   
     const handleSubmit = e => {
       e.preventDefault();
   
       axiosWithAuth()
-        .post("/user/register", user)
-        .then(res => {
-          console.log('TEST', res);
-          localStorage.setItem('token', res.data.payload)
-          setLogging(!isLogging)
-                      
-          console.log('signed up!')
+        .post('/user/register', user)
+        .then( res => {
+          console.log('result', res.data.payload)
+          // localStorage.setItem('token', res.data.payload)
         })
+        setLogging(!isLogging)
         .catch(err => {
-         console.log(err);
+          console.log(err);
         });
     };
           
@@ -106,8 +104,8 @@ const Signup = () => {
     }
   
     return (
-   <>  
-     <FormContainer>
+      <>  
+        <FormContainer>
           <h1>Sign Up</h1>
           <FormWrapper onSubmit={handleSubmit}>
             <div className='signup'>  
@@ -154,16 +152,14 @@ const Signup = () => {
                 
               <div>
                 <button type="submit">Sign Up</button>
-              </div>
-
-               
+              </div>   
          </div>
         </FormWrapper>
           <ToggleBtns >
             <button onClick={handleToggle}>Log In</button>
           </ToggleBtns>
         </FormContainer>
-        </>
+      </>
     );
   };
 export default Signup;

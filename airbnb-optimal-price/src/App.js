@@ -5,10 +5,10 @@ import PrivateRoute from './components/PrivateRoute'
 //Components
 import LogUp from './components/LogUp'
 
-import AllListings from './listings/AllListings'
+// import AllListings from './listings/AllListings'
 import Users from './components/user'
 
-import HomePage from './listings/HomePage';
+// import HomePage from './listings/HomePage';
 
 
 

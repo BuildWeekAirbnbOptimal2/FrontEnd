@@ -19,7 +19,7 @@ const User = () => {
   })
 
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '80px'  }}>
       <h2>{user}</h2>
       
     </div>

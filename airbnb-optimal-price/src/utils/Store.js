@@ -5,7 +5,7 @@ export const ListingsContext = React.createContext([])
 
 const Store = ({children}) => {
   const [isLogging, setLogging] = useState(false)
-  const [hostListings, setHostListings] = useState([])
+  // const [hostListings, setHostListings] = useState([])
 
   return (
     <LogUpContext.Provider value={[isLogging, setLogging]} >

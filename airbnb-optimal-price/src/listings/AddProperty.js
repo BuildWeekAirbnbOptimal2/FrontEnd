@@ -3,12 +3,12 @@ import {axiosWithAuth}  from "../utils/axiosWithAuth";
 
 const AddProperty = (props) => {
   console.log('add', props)
-  const id = props.id
+  const id = Number(props.id)
   console.log(id)
 
   const [property, setProperty] = useState(
       {
-        id: "",
+        id: id,
         name: "",
         bedrooms: 0,
         bathrooms: 0,
@@ -37,7 +37,7 @@ const AddProperty = (props) => {
   const onSubmit = e => {
     e.preventDefault()
     axiosWithAuth()
-      .post("host/11/properties/", property)
+      .post(`host/${id}/properties/`, property)
       .then(res => { 
         setProperty(
           {

@@ -75,7 +75,6 @@ const handleSubmit = (e) => {
   axiosWithAuth()
   .post('/user/login', credentials)
   .then(res => {
-    // not sure what the shape of the data is yet (res.data.token ?).
     localStorage.setItem('token', res.data.token)
     console.log('id: ', res.data.userId)
     const id = res.data.userId

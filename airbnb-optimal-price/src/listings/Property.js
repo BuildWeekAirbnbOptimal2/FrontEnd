@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Property = props => {
+  console.log('1prop', props)
   return (
     <div>
       <h2>{props.listing.name}</h2>

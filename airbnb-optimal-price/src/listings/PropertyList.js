@@ -6,25 +6,33 @@ import AddProperty from './AddProperty';
 import Property from './Property';
 
 
-const PropertyList = () => {
- 
+const PropertyList = (props) => {
+    console.log('p-list', props)
     const [listings, setListings] = useState([])
   
-    useEffect(() => {
-      axiosWithAuth()
-      .get("/hostId/properties")
-      .then(res => setListings(res.user_properties))
-      .catch(err => console.error(err))
-    })
+    // useEffect(() => {
+    //   axiosWithAuth()
+    //   .get("/11/properties")
+    //   .then(res => setListings(res.user_properties))
+    //   .catch(err => console.error(err))
+    // })
   
     return(
       <>
-        <h1> My Listings</h1>
-        {listings.map(listing => (
-          <div key={listing.id}>
-            <Property listing={listing} />
-          </div>
-        ))}
+        <h1 style={{ textAlign: 'center' }}> My Listings</h1>
+        {listings.length === 0 ? (
+          <>
+        <h2 style={{ textAlign: 'center', color: 'red' }}>{props.listings}</h2>
+        </>
+        ) : (
+          props.listings.map(listing => (
+            <div key={listing.id}>
+              <Property listing={listing} />
+            </div>
+          ))
+          )
+        }
+
       </>
     )
   

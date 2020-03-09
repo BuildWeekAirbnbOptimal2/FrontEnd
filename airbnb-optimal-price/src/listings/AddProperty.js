@@ -37,7 +37,7 @@ const AddProperty = (props) => {
   const onSubmit = e => {
     e.preventDefault()
     axiosWithAuth()
-      .post(`host/${id}/properties/`, property)
+      .post(`/${id}/properties/`, property)
       .then(res => { 
         setProperty(
           {
@@ -59,6 +59,8 @@ const AddProperty = (props) => {
             optimal_price: 0
           }
         )
+        console.log(property)
+
       })
       .catch(err => console.error(err));
   };

@@ -10,8 +10,8 @@ const AddProperty = (props) => {
       {
         id: id,
         name: "",
-        bedrooms: 0,
-        bathrooms: 0,
+        bedrooms: 1,
+        bathrooms: 1,
         bed_type: "",
         room_type: "",
        maximum_nights: 10,
@@ -47,14 +47,14 @@ const AddProperty = (props) => {
             bedrooms: 0,
             bathrooms: 1,
             bed_type: "",
-            room_type: "Entire home",
+            room_type: "",
             maximum_nights: 0,
             minimum_nights: 0,
             extra_people: 0,
             accommodates: 0,
             Neighbourhood_group_cleansed: "",
             property_type: "",
-            cancellation_policy: "Mild",
+            cancellation_policy: "",
             guests_included: 0,
             optimal_price: 0
           }
@@ -74,16 +74,16 @@ const AddProperty = (props) => {
         onChange={handleChange}
       />
      <input
-        type="text"
+        type="number"
         name="bedrooms"
-        value={property.bedrooms}
+        value={Number(property.bedrooms)}
         placeholder="Bedrooms"
         onChange={handleChange}
       />
       <input
-        type="text"
+        type="number"
         name="bathrooms"
-        value={property.bathrooms}
+        value={Number(property.bathrooms)}
         placeholder="Bathrooms"
         onChange={handleChange}
       />
@@ -102,30 +102,30 @@ const AddProperty = (props) => {
         onChange={handleChange}
       />
       <input
-        type="text"
-        name="max_nights"
-        value={property.max_nights}
-        placeholder="max_nights"
+        type="number"
+        name="maximum_nights"
+        value={Number(property.maximum_nights)}
+        placeholder="maximum_nights"
         onChange={handleChange}
       />
       <input
-        type="text"
-        name="min_nights"
-        value={property.min_nights}
-        placeholder="min_nights"
+        type="number"
+        name="minimum_nights"
+        value={Number(property.minimum_nights)}
+        placeholder="minimum_nights"
         onChange={handleChange}
       />
       <input
-        type="text" 
+        type="number" 
         name="extra_people"
-        value={property.extra_people}
+        value={Number(property.extra_people)}
         placeholder="extra_people"
         onChange={handleChange}
       />
       <input
-        type="text"
+        type="number"
         name="accomodates"
-        value={property.accomodates}
+        value={Number(property.accommodates)}
         placeholder="accomodates"
         onChange={handleChange}
       />
@@ -151,14 +151,14 @@ const AddProperty = (props) => {
         onChange={handleChange}
       />
       <input
-        type="text"
-        name="guest_included"
-        value={property.guest_included}
-        placeholder="guest_included"
+        type="number"
+        name="guests_included"
+        value={Number(property.guests_included)}
+        placeholder="guests_included"
         onChange={handleChange}
       />
       <input
-        type="text"
+        type="number"
         name="optimal_price"
         value={property.optimal_price}
         placeholder="optimal_price"

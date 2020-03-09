@@ -22,7 +22,7 @@ const PropertyList = (props) => {
         <h1 style={{ textAlign: 'center' }}> My Listings</h1>
         {listings.length === 0 ? (
           <>
-        <h2 style={{ textAlign: 'center', color: 'red' }}>{props.listings}</h2>
+        <h2 style={{ textAlign: 'center', color: 'red' }}>{listings}</h2>
         </>
         ) : (
           props.listings.map(listing => (

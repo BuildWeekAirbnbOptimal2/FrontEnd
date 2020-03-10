@@ -37,7 +37,7 @@ const AddProperty = (props) => {
   const onSubmit = e => {
     e.preventDefault()
     axiosWithAuth()
-      .post(`/${id}/properties/`, property)
+      .post(`/host/${id}/properties`, property)
       .then(res => { 
         setProperty(
           {

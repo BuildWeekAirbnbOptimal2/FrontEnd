@@ -25,9 +25,10 @@ const PropertyList = (props) => {
         <h2 style={{ textAlign: 'center', color: 'red' }}>{listings}</h2>
         </>
         ) : (
-          props.listings.map(listing => (
+          props.listings.user_properties.map(listing => (
             <div key={listing.id}>
-              <Property listing={listing} />
+              {/* <Property listing={listing} /> */}
+              <h2>{listing.name}</h2>
             </div>
           ))
           )

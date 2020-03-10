@@ -53,7 +53,7 @@ const ToggleBtns = styled.div`
 `
 
 const Login = (props) => {
-
+  console.log('home', props)
   const [isLogging, setLogging] = useContext(LogUpContext)
 
 

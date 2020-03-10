@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {axiosWithAuth}  from "../utils/axiosWithAuth";
+import { axiosWithAuth }  from "../utils/axiosWithAuth";
 
 const AddProperty = (props) => {
   console.log('add', props)
@@ -8,7 +8,6 @@ const AddProperty = (props) => {
 
   const [property, setProperty] = useState(
       {
-        id: id,
         name: "",
         bedrooms: 1,
         bathrooms: 1,
@@ -31,10 +30,10 @@ const AddProperty = (props) => {
         ...property,
         [e.target.name]: e.target.value
       }
-    )
-  }
-
-  const onSubmit = e => {
+      )
+    }
+    
+    const onSubmit = e => {
     e.preventDefault()
     axiosWithAuth()
       .post(`/host/${id}/properties`, property)
@@ -42,7 +41,6 @@ const AddProperty = (props) => {
         setProperty(
           {
             ...property,
-            id: id,
             name: "",
             bedrooms: 0,
             bathrooms: 1,

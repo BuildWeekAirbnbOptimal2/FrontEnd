@@ -9,7 +9,7 @@ import {UserIDContext} from '../utils/Store'
 const HomePage = (props) => {
     console.log('home', props)
     const id = props.match.params.id
-    const [property, setProperty] = useState ([])
+    const [properties, setProperties] = useState ([])
 
     const {userID, setUserID} = useContext(UserIDContext)
 
@@ -18,11 +18,11 @@ const HomePage = (props) => {
         .get(`/host/${id}/properties/`)
         // .then(res => setProperty(res.user_properties.id))
         .then(res =>  {
-            console.log('result', res.data)
+            console.log('result', res.data.user_properties)
             if (res.data.message) {
-                setProperty(res.data.message)
+                setProperties(res.data.message)
             } else {
-                setProperty(res.data)
+                setProperties(res.data.user_properties)
             }
         })
         .then(property => {
@@ -31,12 +31,12 @@ const HomePage = (props) => {
         })
         .catch(err => console.log(err, "An Error Has Ocurred "));
     }, []);
-    console.log('userid', userID)
+    console.log('userid', userID)    
         return (
             <div>
                 <h1 style={{ textAlign: 'center' }} >Add Property</h1>
                 <AddProperty id={id}/>
-                <PropertyList listings={property}/>
+                <PropertyList properties={properties}/>
         
             </div>
         )

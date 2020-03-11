@@ -5,7 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import AddProperty from "./AddProperty";
 
 const HomePage = () => {
-  const { id, setId } = useContext(IdContext);
+  const { id  } = useContext(IdContext);
   const [editCard, setEditCard] = useState(null);
   const [listings, setListings] = useState([]);
   const [message, setMessage] = useState("");

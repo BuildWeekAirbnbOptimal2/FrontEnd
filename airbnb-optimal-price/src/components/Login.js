@@ -26,7 +26,7 @@ const Login = props => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
         setId(res.data.userId);
-        props.history.push("/listings");
+        props.history.push("/homepage");
         console.log(res);
       })
       .catch(err => {

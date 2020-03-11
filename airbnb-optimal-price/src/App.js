@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <PrivateRoute exact path="/home" component={HomePage} />
+          <PrivateRoute exact path="/homepage" component={HomePage} />
         </Switch>
       </div>
     </IdContext.Provider>

@@ -12,7 +12,6 @@ import {
 import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import axios from "axios";
-import "../styles/ListingForm.scss";
 
 const initialValues = {
   name: "New Property",
@@ -75,6 +74,7 @@ function AddProperty ({
           .then(response => {
             values.optimal_price = response.data.price;
             console.log("proxy response", response);
+            
             axiosWithAuth()
               [method](url, values)
               .then(response => {

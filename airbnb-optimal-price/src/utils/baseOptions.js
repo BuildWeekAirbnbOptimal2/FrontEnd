@@ -19,22 +19,13 @@ let baseOptions = {
     Shared_room: "Shared Room"
   },
   Neighbourhood_group_cleansed: {
-    Friedrichshain_Kreuzberg: "Friedrichshain - Kreuzberg",
-    Mitte: "Mitte",
-    Pankow: "Pankow",
-    Neukölln: "Neukölln",
-    Charlottenburg_Wilm: "Charlottenburg - Wilm",
-    Tempelhof_Schöneberg: "Tempelhof - Schöneberg",
-    Lichtenberg: "Lichtenberg",
-    Treptow_Köpenick: "Treptow - Köpenick",
-    Steglitz_Zehlendorf: "Steglitz - Zehlendorf",
-    Reinickendorf: "Reinickendorf",
-    Marzahn_Hellersdorf: "Marzahn - Hellersdorf",
-    Spandau: "Spandau"
+    Friedrichshain_Kreuzberg: "City",
+    Country: "Country",
+
   },
   bed_type: {
-    Sofa_Other: "Sofa/Other",
-    Real_Bed: "Real Bed"
+    Queen: "Queen",
+    Bunk_Bed: "Bunk Bed"
   }
 };
 

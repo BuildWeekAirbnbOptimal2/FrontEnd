@@ -70,10 +70,10 @@ const Property = ({
       <div className="panel-wrapper">
         <div className="controlpanel">
           <div onClick={editListing}>
-            <FontAwesomeIcon icon={faEdit} size="lg" />
+        EDIT 
           </div>
           <div onClick={deleteListing}>
-            <FontAwesomeIcon icon={faTrashAlt} size="lg" />
+           DELETE X
           </div>
         </div>
       </div>
@@ -99,38 +99,20 @@ const Property = ({
         )}
         <div className="attributes">
           <div>
-            <FontAwesomeIcon icon={faBed} size="2x" />
+          
             <h3>{item.bedrooms} Bedrooms</h3>
           </div>
           <div>
-            <FontAwesomeIcon icon={faBath} size="2x" />
+         
             <h3>{item.bathrooms} Baths</h3>
           </div>
           <div>
-            <FontAwesomeIcon icon={faHome} size="2x" />
             <h3>{getBaseOptionValue("property_type", item.property_type)}</h3>
           </div>
           <div>
-            <FontAwesomeIcon
-              icon={faDoorClosed}
-              size="2x"
-              alt={item.room_type}
-            />
+   
             <h3>Rooms - {getBaseOptionValue("room_type", item.room_type)}</h3>
           </div>
-        </div>
-        <div className="arrow">
-          {" "}
-          {!open ? (
-            <FontAwesomeIcon icon={faAngleDown} size="lg" onClick={openCard} />
-          ) : (
-            <FontAwesomeIcon
-              icon={faAngleUp}
-              size="lg"
-              onClick={openCard}
-              className="upArrow"
-            />
-          )}
         </div>
       </div>
       {open ? (

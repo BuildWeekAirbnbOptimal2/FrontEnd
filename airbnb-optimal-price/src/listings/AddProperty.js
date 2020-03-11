@@ -6,6 +6,8 @@ const AddProperty = (props) => {
   const id = Number(props.id)
   console.log(id)
 
+  // const [isEditing, setEditing] = useState(false)
+
   const [property, setProperty] = useState(
       {
         name: "",
@@ -32,6 +34,8 @@ const AddProperty = (props) => {
       }
       )
     }
+
+    
     
     const onSubmit = e => {
     e.preventDefault()
@@ -64,109 +68,221 @@ const AddProperty = (props) => {
   };
 
   return (
-    <div style={{ display: 'flex', width: '660px', justifyContent: 'space-around', margin: '0 auto' }}>
-    <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        name="name"
-        value={property.name}
-        placeholder="Property Name"
-        onChange={handleChange}
-      />
-     <input
-        type="number"
-        name="bedrooms"
-        value={Number(property.bedrooms)}
-        placeholder="Bedrooms"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="bathrooms"
-        value={Number(property.bathrooms)}
-        placeholder="Bathrooms"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="room_type"
-        value={property.room_type}
-        placeholder="room_type"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="bed_type"
-        value={property.bed_type}
-        placeholder="bed_type"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="maximum_nights"
-        value={Number(property.maximum_nights)}
-        placeholder="maximum_nights"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="minimum_nights"
-        value={Number(property.minimum_nights)}
-        placeholder="minimum_nights"
-        onChange={handleChange}
-      />
-      <input
-        type="number" 
-        name="extra_people"
-        value={Number(property.extra_people)}
-        placeholder="extra_people"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="accomodates"
-        value={Number(property.accommodates)}
-        placeholder="accomodates"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="Neighbourhood_group_cleansed"
-        value={property.Neighbourhood_group_cleansed}
-        placeholder="Neighbourhood_group_cleansed"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="property_type"
-        value={property.property_type}
-        placeholder="property_type"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="cancellation_policy"
-        value={property.cancellation_policy}
-        placeholder="cancellation_policy"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="guests_included"
-        value={Number(property.guests_included)}
-        placeholder="guests_included"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="optimal_price"
-        value={property.optimal_price}
-        placeholder="optimal_price"
-        onChange={handleChange}
-      />
-      <button type="submit">Add Property</button>
-    </form>
-    </div> 
+  <>
+    {/* {isEditing ? (
+      <div style={{ display: 'flex', width: '660px', justifyContent: 'space-around', margin: '0 auto' }}>
+        <h1 style={{ textAlign: 'center' }}>Edit Property</h1>
+         <form onSubmit={props.handleEdit}>
+        <input
+          type="text"
+          name="name"
+          value={property.name}
+          placeholder="Property Name"
+          onChange={handleChange}
+        />
+       <input
+          type="number"
+          name="bedrooms"
+          value={Number(property.bedrooms)}
+          placeholder="Bedrooms"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="bathrooms"
+          value={Number(property.bathrooms)}
+          placeholder="Bathrooms"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="room_type"
+          value={property.room_type}
+          placeholder="room_type"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="bed_type"
+          value={property.bed_type}
+          placeholder="bed_type"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="maximum_nights"
+          value={Number(property.maximum_nights)}
+          placeholder="maximum_nights"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="minimum_nights"
+          value={Number(property.minimum_nights)}
+          placeholder="minimum_nights"
+          onChange={handleChange}
+        />
+        <input
+          type="number" 
+          name="extra_people"
+          value={Number(property.extra_people)}
+          placeholder="extra_people"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="accomodates"
+          value={Number(property.accommodates)}
+          placeholder="accomodates"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="Neighbourhood_group_cleansed"
+          value={property.Neighbourhood_group_cleansed}
+          placeholder="Neighbourhood_group_cleansed"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="property_type"
+          value={property.property_type}
+          placeholder="property_type"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="cancellation_policy"
+          value={property.cancellation_policy}
+          placeholder="cancellation_policy"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="guests_included"
+          value={Number(property.guests_included)}
+          placeholder="guests_included"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="optimal_price"
+          value={property.optimal_price}
+          placeholder="optimal_price"
+          onChange={handleChange}
+        />
+        <button type="submit">Edit Property</button>
+      </form>
+      </div> 
+      ) : ( */}
+        <>
+          <h1 style={{ textAlign: 'center' }} >Add Property</h1>
+        <div style={{ display: 'flex', width: '660px', justifyContent: 'space-around', margin: '0 auto' }}>
+        <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          name="name"
+          value={property.name}
+          placeholder="Property Name"
+          onChange={handleChange}
+        />
+       <input
+          type="number"
+          name="bedrooms"
+          value={Number(property.bedrooms)}
+          placeholder="Bedrooms"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="bathrooms"
+          value={Number(property.bathrooms)}
+          placeholder="Bathrooms"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="room_type"
+          value={property.room_type}
+          placeholder="room_type"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="bed_type"
+          value={property.bed_type}
+          placeholder="bed_type"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="maximum_nights"
+          value={Number(property.maximum_nights)}
+          placeholder="maximum_nights"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="minimum_nights"
+          value={Number(property.minimum_nights)}
+          placeholder="minimum_nights"
+          onChange={handleChange}
+        />
+        <input
+          type="number" 
+          name="extra_people"
+          value={Number(property.extra_people)}
+          placeholder="extra_people"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="accomodates"
+          value={Number(property.accommodates)}
+          placeholder="accomodates"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="Neighbourhood_group_cleansed"
+          value={property.Neighbourhood_group_cleansed}
+          placeholder="Neighbourhood_group_cleansed"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="property_type"
+          value={property.property_type}
+          placeholder="property_type"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="cancellation_policy"
+          value={property.cancellation_policy}
+          placeholder="cancellation_policy"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="guests_included"
+          value={Number(property.guests_included)}
+          placeholder="guests_included"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="optimal_price"
+          value={property.optimal_price}
+          placeholder="optimal_price"
+          onChange={handleChange}
+        />
+        <button type="submit">Add Property</button>
+      </form>
+      </div> 
+        </>
+      
+    </>
   );
 };
 

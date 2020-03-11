@@ -23,7 +23,7 @@ const FormContainer = styled.form`
   /* margin-left: 40%; */
   /* margin-bottom: 10%; */
   margin: 80px auto;
-  box-shadow: 5px 10px 20px #c9c7c7 ;
+  box-shadow: 5px 10px 20px #c9c7c7;
   align-items: center;
    
 

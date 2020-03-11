@@ -1,18 +1,18 @@
-  
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router";
+import { IdContext } from "../contexts/IdContext";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component, ...stuff }) => {
   return (
     <Route
-      {...rest}
-      render={props => {
-        if (localStorage.getItem("token")) {
-          return <Component {...props} />;
-        } else {
-          return <Redirect to="/login" />;
-        }
-      }}
+      {...stuff}
+      render={props =>
+        localStorage.getItem("token") ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/" />
+        )
+      }
     />
   );
 };

@@ -1,126 +1,103 @@
-import React, { useState, useContext } from 'react'
-import styled from 'styled-components'
+import React, { useState, useContext } from "react";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { IdContext } from "../contexts/IdContext";
 
-import { axiosWithAuth } from '../utils/axiosWithAuth'
-import { logUpContext } from '../utils/Store'
 
-const FormWrapper = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin: 80px auto 0;
-`
+const Login = props => {
+  const { id, setId, getUsers } = useContext(IdContext);
+  const [touch, setTouch] = useState({
+    username: false,
+    password: false
+  });
+  const [creds, setCreds] = useState({
+    username: "",
+    password: ""
+  });
 
-const FormContainer = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-   
-  input {
-    padding: 5px;
-    margin-bottom: 10px
-  }
+  const handleChange = e => {
+    setCreds({ ...creds, [e.target.name]: e.target.value });
+  };
 
-  button {
-    width: 120px;
-    padding: 5px;
-    background: #ff3d4d;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    outline-color: orange;
-  }
-` 
+  const handleLogin = e => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post("user/login", creds)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        setId(res.data.userId);
+        props.history.push("/listings");
+        console.log(res);
+      })
+      .catch(err => {
+        localStorage.removeItem("token");
+        console.log(err);
+      });
+  };
+  const goToRegister = () => {
+    props.history.push("/signup");
+  };
 
-const ToggleBtns = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 200px;
-    margin: 20px auto;
-
-  button {
-    background: transparent;
-    color: lightblue;
-    border: none;
-    font-size: 1.2rem;
-    outline: transparent;
-    cursor: pointer;  
-  }
-`
-
-const Login = (props) => {
-
-  const [isLogging, setLogging] = useContext(logUpContext)
-
-  console.log(props)
-  const [credentials, setCredentials] = useState({
-    username: '',
-    password: ''
-  })
-
-const handleChange = e => {
-  // e.preventDefault()
-  setCredentials({
-    ...credentials,
-    [e.target.name]: e.target.value
-  })
-  console.log(credentials)
-}
-
-const handleSubmit = (e) => {
-  e.preventDefault()
-
-  axiosWithAuth()
-  .post('/user/login', credentials)
-  .then(res => {
-    // not sure what the shape of the data is yet (res.data.token ?).
-    localStorage.setItem('token', res.data.token)
-    console.log('token: ', res.data.token)
-    // props.history.push('./listings')
-  })
-  .catch(err => [
-    console.log(err)
-  ])
-
-}
-
-const handleToggle = (e) => {
-  e.preventDefault()
-  setLogging(!isLogging)
-}
-
-console.log(props)
- 
+  const validator = () => {
+    console.log(creds);
+    if (!creds.password) {
+      setTouch({ ...touch, password: true });
+      console.log("touch");
+    } else {
+      setTouch({ ...touch, password: false });
+    }
+  };
+  const userValidator = () => {
+    console.log(creds);
+    if (!creds.username) {
+      setTouch({ ...touch, username: true });
+      console.log("touch");
+    } else {
+      setTouch({ ...touch, username: false });
+    }
+  };
   return (
-    <FormWrapper>
-      <FormContainer onSubmit={handleSubmit} >
-      <h2>Sign in</h2>
-        <input 
-        type="text" 
-        name="username" 
-        placeholder="username" 
-        onChange={handleChange}
-        value={credentials.username}
-        required
-        />
-        <input 
-        type="password" 
-        name="password" 
-        placeholder="password"
-        onChange={handleChange}
-        value={credentials.password}
-        required
-        />
-        <button>Log In</button>
-      </FormContainer>
-      <ToggleBtns >
-        <button onClick={handleToggle}>Sign Up</button>
-      </ToggleBtns>
-    </FormWrapper>
-  )
-}
+    <div className="form-card">
+      <form>
+        <h1>Log in </h1>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <label htmlFor="username">username</label>
+          {touch.username ? (
+            <span style={{ color: "red" }}>Enter a username</span>
+          ) : null}
+        </div>
+        <input
+          name="username"
+          type="text"
+          onChange={handleChange}
+          value={creds.username}
+          onBlur={userValidator}
+        ></input>
+        <div style={{ display: "flex" }}>
+          <label htmlFor="password">password</label>
+          {touch.password ? (
+            <p style={{ color: "red" }}>Enter a password</p>
+          ) : null}
+        </div>
+        <input
+          name="password"
+          type="password"
+          onChange={handleChange}
+          value={creds.password}
+          onBlur={validator}
+        ></input>
 
-export default Login
+        <div className="btn-div">
+          <button className="login" onClick={handleLogin}>
+            Login
+          </button>
+          <button className="register" onClick={goToRegister}>
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Login;

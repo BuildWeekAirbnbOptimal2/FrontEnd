@@ -1,166 +1,113 @@
-import React, {useState, useContext} from 'react';
-import {axiosWithAuth} from 'axios';
-import styled from "styled-components";
+import React, { useState, useContext } from "react";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-import { logUpContext } from '../utils/Store'
+const SignUp = props => {
+  const [userCreds, setUserCreds] = useState({
+    firstname: "",
+    lastname: "",
+    username: "",
+    password: "",
+    email: ""
+  });
 
+  const [confirm, setConfirm] = useState(false);
 
-const FormWrapper = styled.div`
-  width: 100%;
-  height: 90vh;
-  display: flex;
-  text-align: center;
-  margin: 20px auto 0;
-`
-
-const FormContainer = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-  height: 500px;
-  border: 3px solid #c9c7c7;
-  border-radius:15px;
-  /* margin-left: 40%; */
-  /* margin-bottom: 10%; */
-  margin: 80px auto;
-  box-shadow: 5px 10px 20px #c9c7c7 ;
-  align-items: center;
-   
-
-  input {
-      width:65%;
-      border: 1.5px solid gray;
-      border-radius:5px;
-    padding: 5px;
-    margin-bottom: 20px
-  }
-
-  button {
-    margin-top: 35px;
-    width: 160px;
-    padding: 8px;
-    background: #5f3739;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-  
-  }`
-
-const ToggleBtns = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 200px;
-  margin: 20px auto;
-
-button {
-  background: transparent;
-  color: lightblue;
-  border: none;
-  font-size: 1.2rem;
-  outline: transparent;
-  cursor: pointer;  
-}
-`
-
-const Signup = props => {
-    const [user, setUser] = useState({
-        firstname: "",
-        lastname:"",
-        password: "",
-        username: ''
-    });
-
-    const [isLoading, setIsLoading] = useState(false);
-
-    const [isLogging, setLogging] = useContext(logUpContext)
-
-    const handleChange = e => {
-      setUser({
-        ...user,
-        [e.target.name]: e.target.value
-      });
-    };
-  
-    const handleSubmit = e => {
-      e.preventDefault();
-      setIsLoading(true);
-
-         axiosWithAuth()
-            .post("/user/login", user)
-            .then(res => {
-            console.log('Hello, Test', res);
-            setUser({
-                firstname: "",
-                lastname:"",
-                city:'',
-                state:"",
-                password: "",
-                username: ''
-            });
-          props.history.push("/login");
-          window.location.reload(false);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    };
-
-    const handleToggle = (e) => {
-      e.preventDefault()
-      setLogging(!isLogging)
-    }
-  
-    return (
-   <>  
-     <FormContainer>
-          <h1>Sign Up</h1>
-          <FormWrapper onSubmit={handleSubmit}>
-            <div className='signup'>  
-                <input
-                  type='text'
-                  placeholder='First Name'
-                  name='firstName'
-                  value={user.firstName}
-                  onChange={handleChange}
-                  required
-                />
-                 <input
-                  placeholder='Last Name'
-                  name='lastname'
-                  type='text'
-                  value={user.lastname}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  placeholder='Username'
-                  name='username'
-                  type='text'
-                  value={user.username}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  placeholder='Password'
-                  name='password'
-                  type='password'
-                  value={user.password}
-                  onChange={handleChange}
-                  required
-                />
-                
-              <div>
-                <button type='submit'>Sign Up</button>
-              </div>
-                 {/* <link to=''>I already have an account</link> */}
-               
-         </div>
-        </FormWrapper>
-              <ToggleBtns >
-                <button onClick={handleToggle} >Log In</button>
-              </ToggleBtns>
-        </FormContainer>
-        </>
-    );
+  const handleChange = e => {
+    setUserCreds({ ...userCreds, [e.target.name]: e.target.value });
   };
-export default Signup;
+
+  const register = e => {
+    e.preventDefault();
+    console.log("user creds", userCreds);
+    axiosWithAuth()
+      .post("user/register", userCreds)
+      .then(res => {
+        localStorage.setItem("token", res.data.payload);
+        console.log(res);
+        if (res.statusText === "Created") {
+          setConfirm(
+            <h4 style={{ color: "lightgreen", marginTop: "-20px" }}>
+              Thanks for registering.
+            </h4>
+          );
+        } else {
+          setConfirm(null);
+        }
+      })
+      .catch(err => {
+        localStorage.removeItem("token");
+        if (err.message) {
+          setConfirm(
+            <h4 style={{ color: "red", marginTop: "-20px" }}>
+              Please fill out all fields.
+            </h4>
+          );
+          console.log(err);
+        }
+      });
+  };
+
+  const login = e => {
+    e.preventDefault();
+    props.history.push("/");
+  };
+
+  return (
+    <div className="form-card regstyle">
+      <form>
+        <h1>Register</h1>
+        {confirm}
+        <label htmlFor="firstname">first name</label>
+        <input
+          required
+          name="firstname"
+          type="text"
+          onChange={handleChange}
+          value={userCreds.firstname}
+        ></input>
+        <label htmlFor="lastname">last name</label>
+        <input
+          required
+          name="lastname"
+          type="text"
+          onChange={handleChange}
+          value={userCreds.lastname}
+        ></input>
+        <label htmlFor="username">username</label>
+        <input
+          required
+          name="username"
+          type="text"
+          onChange={handleChange}
+          value={userCreds.username}
+        ></input>
+        <label htmlFor="password">password</label>
+        <input
+          required
+          name="password"
+          type="password"
+          onChange={handleChange}
+          value={userCreds.password}
+        ></input>
+        <label htmlFor="confirm">email</label>
+        <input
+          required
+          name="email"
+          type="email"
+          onChange={handleChange}
+          value={userCreds.confirm}
+        ></input>
+        <div className="btn-div">
+          <button className="submit" onClick={register}>
+            Submit
+          </button>
+          <button className="login2" onClick={login}>
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default SignUp;

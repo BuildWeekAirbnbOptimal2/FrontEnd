@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { mapBaseOption } from "../utils/baseOptions";
+import { mapBaseOption } from "../utils/inputOptions";
 import {
   withFormik,
   Form,

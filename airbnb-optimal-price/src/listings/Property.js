@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { getBaseOptionValue } from "../utils/baseOptions";
+import { getBaseOptionValue } from "../utils/inputOptions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Property = ({
